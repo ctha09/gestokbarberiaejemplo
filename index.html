@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GestOK Barberías</title>
+<style>
+:root{
+  --bg:#0b0e11;--bg2:#101419;--panel:#171b21;--panel2:#1d222a;--panel3:#252c35;
+  --border:#2e3641;--text:#f6f7f9;--muted:#9aa5b2;--orange:#f28c28;--orange2:#ff9f43;
+  --orangeSoft:rgba(242,140,40,.13);--green:#38c77d;--red:#ff6666;--blue:#5799ff;--yellow:#f4c95d;
+  --shadow:0 20px 55px rgba(0,0,0,.28);--radius:20px;
+}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}body{overflow:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+#splash{position:fixed;inset:0;z-index:1000;overflow:hidden;background:radial-gradient(circle at 50% 25%,rgba(242,140,40,.12),transparent 18%),linear-gradient(90deg,#04070d 0%,#091120 45%,#050a14 100%)}.splash-orbit{position:absolute;left:50%;top:50%;transform:translate(-50%,-53%);border:1px solid rgba(242,140,40,.12);border-radius:50%}.splash-orbit.o1{width:360px;height:360px}.splash-orbit.o2{width:560px;height:560px}.splash-box{position:absolute;left:50%;top:35%;transform:translate(-50%,-50%);text-align:center;z-index:2;animation:splashIn .85s cubic-bezier(.2,.8,.2,1)}.splash-wordmark{font-size:70px;font-weight:1000;letter-spacing:-3px;line-height:1}.splash-wordmark .gest{color:#f5f7fa}.splash-wordmark .ok{color:var(--orange)}.splash-sub{margin-top:10px;color:#f1f3f7;font-size:22px;font-weight:500}.splash-line{width:180px;height:3px;margin:18px auto 0;background:rgba(255,255,255,.14);border-radius:999px;overflow:hidden}.splash-line:after{content:'';display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--orange),#ffad54)}.splash-actions{position:absolute;left:48px;top:50%;transform:translateY(-2%);display:flex;gap:10px;z-index:2}.hero-btn{padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(26,31,39,.82);color:#fff;font-weight:700;font-size:14px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.hero-btn.primary{background:var(--orange);color:#fff;box-shadow:0 10px 25px rgba(242,140,40,.28)}.splash-enter{position:absolute;right:10px;top:50%;transform:translateY(-8%);padding:12px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.09);background:rgba(26,31,39,.88);color:#fff;font-weight:700;z-index:2}.splash-footer{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);width:min(700px,calc(100% - 96px));padding:18px 24px;text-align:center;background:rgba(16,19,26,.72);border:1px solid rgba(255,255,255,.07);border-radius:20px;color:#c5cbd3;font-size:14px;backdrop-filter:blur(12px);z-index:2}.splash-footer strong{color:#fff}@keyframes splashIn{from{opacity:0;transform:translate(-50%,-50%) scale(.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}@media(max-width:900px){.splash-wordmark{font-size:56px}.splash-sub{font-size:18px}.splash-actions{left:18px;right:18px;top:auto;bottom:112px;transform:none;flex-wrap:wrap}.splash-enter{top:auto;right:18px;bottom:176px;transform:none}.splash-footer{bottom:24px;width:calc(100% - 36px)}}@media(max-width:620px){.splash-orbit.o1{width:260px;height:260px}.splash-orbit.o2{width:390px;height:390px}.splash-wordmark{font-size:44px;letter-spacing:-2px}.splash-sub{font-size:17px}.hero-btn,.splash-enter{font-size:13px;padding:11px 13px}.splash-actions{bottom:96px;gap:8px}.splash-enter{bottom:146px}.splash-footer{font-size:12px;padding:14px 16px}}
+.entry{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 84% 4%,rgba(242,140,40,.11),transparent 27%),linear-gradient(180deg,#0a0d10,#11151a)}.entry-card{width:min(1040px,100%);background:rgba(23,27,33,.94);border:1px solid var(--border);border-radius:30px;box-shadow:var(--shadow);padding:24px;backdrop-filter:blur(16px)}.brand{display:block}.brand h1{margin:0;font-size:21px;font-weight:900}.brand h1 .ok{color:var(--orange)}.brand p{margin:4px 0 0;color:var(--muted);font-size:12px}.brand-plain{font-size:19px;font-weight:900;letter-spacing:-.4px}.brand-plain .ok{color:var(--orange)}.entry-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}.entry-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.entry-visual{min-height:450px;border:1px solid var(--border);border-radius:23px;padding:26px;background:linear-gradient(145deg,var(--panel2),#14181e);position:relative;overflow:hidden}.entry-visual:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-145px;top:-145px;background:radial-gradient(circle,rgba(242,140,40,.2),transparent 68%)}.hero-kicker{font-size:11px;color:var(--orange);text-transform:uppercase;letter-spacing:1.25px;font-weight:850}.hero-title{font-size:36px;line-height:1.06;margin:15px 0 11px;max-width:500px}.hero-copy{color:var(--muted);font-size:13px;line-height:1.72;max-width:470px}.mini-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:28px}.mini-kpi{padding:14px;background:rgba(12,15,18,.58);border:1px solid var(--border);border-radius:15px}.mini-kpi span{display:block;color:var(--muted);font-size:10px}.mini-kpi strong{display:block;font-size:18px;margin-top:5px}.entry-form{padding:14px 6px}.entry-form h2{font-size:25px;margin:0 0 7px}.entry-form>p{color:var(--muted);font-size:12px;line-height:1.6;margin:0 0 18px}
+.field{margin-bottom:12px}.field label,.field-mini label{display:block;color:var(--muted);font-size:10px;margin-bottom:6px}.input,.select,.textarea{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:13px;padding:11px 12px;outline:none}.textarea{min-height:82px;resize:vertical}.input:focus,.select:focus,.textarea:focus{border-color:rgba(242,140,40,.7)}.btn{border:0;border-radius:13px;padding:10px 14px;font-weight:850;transition:.18s}.btn:hover{transform:translateY(-1px)}.btn-primary{background:var(--orange);color:#151515}.btn-secondary{background:var(--panel3);color:#fff;border:1px solid var(--border)}.btn-danger{background:rgba(255,102,102,.11);border:1px solid rgba(255,102,102,.25);color:var(--red)}.btn-green{background:rgba(56,199,125,.14);border:1px solid rgba(56,199,125,.25);color:var(--green)}.btn-full{width:100%}.small-note{font-size:10px;color:var(--muted);line-height:1.55;margin-top:10px}.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:999px;font-size:9px;background:var(--orangeSoft);color:var(--orange)}.badge.green{background:rgba(56,199,125,.12);color:var(--green)}.badge.blue{background:rgba(87,153,255,.12);color:var(--blue)}.badge.red{background:rgba(255,102,102,.12);color:var(--red)}.badge.yellow{background:rgba(244,201,93,.12);color:var(--yellow)}
+.profile-screen{min-height:100vh;padding:22px;background:radial-gradient(circle at 80% 0%,rgba(242,140,40,.1),transparent 25%),var(--bg)}.profile-wrap{max-width:1150px;margin:0 auto}.profile-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.profile-top h2{margin:0;font-size:27px}.profile-top p{margin:4px 0 0;color:var(--muted);font-size:12px}.profiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}.profile-card{text-align:left;background:var(--panel);border:1px solid var(--border);border-radius:19px;padding:17px;color:var(--text);min-height:150px;transition:.2s;box-shadow:var(--shadow)}.profile-card:hover{transform:translateY(-3px);border-color:rgba(242,140,40,.55)}.profile-card.admin{background:linear-gradient(145deg,rgba(242,140,40,.09),var(--panel))}.profile-avatar{width:47px;height:47px;border-radius:14px;display:grid;place-items:center;background:var(--orangeSoft);color:var(--orange);font-weight:950}.profile-card strong{display:block;margin-top:15px;font-size:15px}.profile-card small{display:block;color:var(--muted);margin-top:4px}.profile-kpi{margin-top:12px;font-size:11px;color:var(--green)}.admin-login-panel{max-width:390px;margin:26px auto 0;padding:18px;background:var(--panel);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}
+.app{height:100vh;display:grid;grid-template-columns:238px 1fr;background:var(--bg)}.sidebar{padding:14px;border-right:1px solid var(--border);background:#0e1115;display:flex;flex-direction:column;gap:14px}.side-brand{padding:8px 7px 14px;border-bottom:1px solid var(--border)}.side-brand h2{margin:0;font-size:19px}.side-brand h2 .ok{color:var(--orange)}.side-brand p{margin:5px 0 0;color:var(--muted);font-size:10px}.current-user{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:10px}.current-avatar{width:39px;height:39px;border-radius:12px;display:grid;place-items:center;background:var(--orangeSoft);color:var(--orange);font-weight:950}.current-user strong{font-size:12px}.current-user span{display:block;color:var(--muted);font-size:9px;margin-top:2px}.nav{display:flex;flex-direction:column;gap:5px;overflow:auto;padding-right:2px}.nav::-webkit-scrollbar{width:5px}.nav::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:10px}.nav-btn{border:0;background:transparent;color:var(--muted);padding:10px 11px;border-radius:12px;text-align:left}.nav-btn.active{background:var(--orangeSoft);color:var(--orange);font-weight:850}.nav-btn:hover{background:var(--panel);color:#fff}.side-bottom{margin-top:auto}.content{min-width:0;display:grid;grid-template-rows:auto 1fr}.topbar{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;border-bottom:1px solid var(--border);background:rgba(17,21,26,.92)}.topbar h1{font-size:18px;margin:0}.topbar p{font-size:10px;color:var(--muted);margin:3px 0 0}.top-actions{display:flex;align-items:center;gap:8px}.chip{background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:8px 10px;color:var(--muted);font-size:10px}.main{min-height:0;overflow:hidden;padding:15px}.view{display:none;height:100%;overflow:auto;padding-right:4px}.view.active{display:block}.view::-webkit-scrollbar{width:7px}.view::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:10px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:13px}.section-head h2{margin:0;font-size:23px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:11px}.grid{display:grid;gap:12px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.two{grid-template-columns:1.2fr .8fr}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}.metric span{display:block;color:var(--muted);font-size:10px}.metric strong{display:block;font-size:26px;margin-top:7px}.metric small{display:block;color:var(--green);margin-top:5px;font-size:9px}.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.card-head h3{margin:0;font-size:14px}.card-head p{margin:3px 0 0;color:var(--muted);font-size:9px}.list{display:flex;flex-direction:column;gap:8px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 11px;border:1px solid var(--border);background:var(--panel2);border-radius:13px}.row strong{font-size:11px}.row small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.money{color:var(--orange);font-weight:900}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:11px}.toolbar>div{display:flex;gap:7px;flex-wrap:wrap}.toolbar .input,.toolbar .select{width:auto;min-width:150px;padding:9px 10px}
+.sales-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:12px;height:100%}.services-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.service{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel2),#171b21);border-radius:15px;padding:12px;color:#fff;text-align:left;min-height:105px;transition:.18s}.service:hover{border-color:rgba(242,140,40,.6);transform:translateY(-1px)}.service span{display:block;font-size:22px}.service strong{display:block;margin-top:13px;font-size:11px}.service b{display:block;margin-top:4px;color:var(--orange);font-size:12px}.cart{display:flex;flex-direction:column}.cart-items{flex:1;overflow:auto;display:flex;flex-direction:column;gap:7px}.cart-total{border-top:1px solid var(--border);margin-top:10px;padding-top:11px}.total-line{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin:4px 0}.total-line.big{font-size:20px;color:#fff;font-weight:950;margin-top:8px}
+table{width:100%;border-collapse:separate;border-spacing:0 7px}th{text-align:left;color:var(--muted);font-size:9px;padding:0 8px}td{background:var(--panel2);padding:9px 8px;font-size:10px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}td:first-child{border-left:1px solid var(--border);border-radius:10px 0 0 10px}td:last-child{border-right:1px solid var(--border);border-radius:0 10px 10px 0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.form-grid .full{grid-column:1/-1}
+.user-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:10px}.user-card{background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:13px}.user-card-top{display:flex;align-items:center;gap:9px}.user-card p{margin:10px 0 0;color:var(--muted);font-size:9px;line-height:1.55}.payroll-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:10px}.pay-card{background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:13px}.pay-line{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin:6px 0}.pay-line strong{color:#fff}.pay-total{display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:13px}.pay-total strong{color:var(--orange)}
+.cash-status{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border-radius:16px;border:1px solid var(--border);background:var(--panel2)}.cash-light{width:11px;height:11px;border-radius:50%;background:var(--red);box-shadow:0 0 16px rgba(255,102,102,.45)}.cash-light.open{background:var(--green);box-shadow:0 0 16px rgba(56,199,125,.45)}.chart{height:235px;position:relative}.chart canvas{width:100%;height:100%}.empty{text-align:center;color:var(--muted);font-size:10px;padding:24px;border:1px dashed var(--border);border-radius:13px}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:900;display:grid;place-items:center;padding:18px}.modal{width:min(500px,100%);background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:var(--shadow)}.modal h3{margin:0 0 6px}.modal>p{margin:0 0 14px;color:var(--muted);font-size:10px;line-height:1.55}.modal-actions{display:flex;gap:8px;margin-top:10px}.toast{position:fixed;right:18px;bottom:18px;z-index:1200;background:#11151a;border:1px solid var(--border);border-radius:13px;padding:11px 13px;box-shadow:var(--shadow);font-size:11px;display:none}.toast.show{display:block;animation:pop .18s ease}@keyframes pop{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:1020px){body{overflow:auto}.app{grid-template-columns:1fr;height:auto;min-height:100vh}.sidebar{border-right:0;border-bottom:1px solid var(--border)}.nav{flex-direction:row;overflow:auto}.nav-btn{white-space:nowrap}.content{min-height:820px}.stats{grid-template-columns:repeat(2,1fr)}.two,.sales-layout{grid-template-columns:1fr}.entry-grid{grid-template-columns:1fr}.entry-visual{min-height:280px}}
+@media(max-width:650px){.entry{padding:10px}.entry-card{padding:14px}.entry-visual{display:none}.stats,.three,.form-grid{grid-template-columns:1fr}.services-grid{grid-template-columns:1fr 1fr}.profile-screen{padding:12px}.top-actions .chip:first-child{display:none}}
+
+/* =========================================================
+   GESTOK BARBERÍAS — MOBILE FIRST UX
+   ========================================================= */
+.mobile-wordmark,.mobile-quick,.mobile-bottom-nav,.mobile-more-sheet,.mobile-more-backdrop,.mobile-cart-bar{display:none}
+
+@keyframes viewIn{
+  from{opacity:0;transform:translateY(12px) scale(.992)}
+  to{opacity:1;transform:none}
+}
+@keyframes cardRise{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:none}
+}
+@keyframes pulseSoft{
+  0%,100%{box-shadow:0 10px 26px rgba(242,140,40,.18)}
+  50%{box-shadow:0 12px 34px rgba(242,140,40,.32)}
+}
+
+@media(max-width:760px){
+  html,body{width:100%;height:100%;overscroll-behavior:none;background:#090c10}
+  body{overflow:hidden;-webkit-tap-highlight-color:transparent}
+  button,.btn,.nav-btn,.service,.profile-card{touch-action:manipulation}
+
+  .app{display:block;width:100%;height:100svh;min-height:0;background:
+    radial-gradient(circle at 100% 0%,rgba(242,140,40,.08),transparent 26%),
+    linear-gradient(180deg,#0a0d11,#0c1015)}
+  .sidebar{display:none!important}
+  .content{height:100svh;min-height:0;display:grid;grid-template-rows:auto 1fr}
+
+  .topbar{
+    min-height:72px;padding:10px 14px 9px;position:relative;z-index:20;
+    background:rgba(10,13,17,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.055)
+  }
+  .topbar>div:first-child{min-width:0}
+  .mobile-wordmark{display:block;font-size:11px;font-weight:900;letter-spacing:.1px;margin-bottom:2px;color:#f5f6f8}
+  .mobile-wordmark .ok{color:var(--orange)}
+  .mobile-wordmark .barberias{color:var(--muted);font-weight:700;margin-left:4px}
+  .topbar h1{font-size:20px;line-height:1.1;letter-spacing:-.35px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topbar p{display:none}
+  .top-actions{gap:6px}
+  .top-actions .chip:first-child{display:none}
+  .top-actions .chip{max-width:112px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:7px 9px;font-size:9px;background:rgba(29,34,42,.82)}
+
+  .main{min-height:0;overflow:hidden;padding:10px 10px 0}
+  .view{height:100%;overflow-y:auto;overflow-x:hidden;padding:2px 2px 112px;scrollbar-width:none;overscroll-behavior-y:contain}
+  .view::-webkit-scrollbar{display:none}
+  .view.active{animation:viewIn .34s cubic-bezier(.2,.8,.2,1)}
+  .view.active .card{animation:cardRise .38s both}
+  .view.active .card:nth-child(2){animation-delay:.035s}
+  .view.active .card:nth-child(3){animation-delay:.07s}
+  .view.active .card:nth-child(4){animation-delay:.105s}
+
+  .section-head{align-items:center;margin:3px 1px 10px}
+  .section-head h2{font-size:23px;letter-spacing:-.45px}
+  .section-head p{font-size:10px;line-height:1.4;margin-top:3px}
+  .section-head>.btn{min-height:44px}
+
+  .grid{gap:8px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .two,.three{grid-template-columns:1fr}
+  .card{padding:12px;border-radius:18px;box-shadow:0 12px 32px rgba(0,0,0,.2);border-color:rgba(255,255,255,.075)}
+  .metric{min-height:104px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+  .metric:after{content:"";position:absolute;width:90px;height:90px;right:-34px;top:-40px;border-radius:50%;background:radial-gradient(circle,rgba(242,140,40,.13),transparent 68%);pointer-events:none}
+  .metric span{font-size:9px;line-height:1.2}
+  .metric strong{font-size:20px;margin-top:7px;letter-spacing:-.55px;line-height:1.05}
+  .metric small{font-size:8px;line-height:1.3}
+  .card-head{margin-bottom:10px}.card-head h3{font-size:13px}.card-head p{font-size:8px}
+  .row{min-height:54px;padding:10px;border-radius:14px}.row strong{font-size:11px}.row small{font-size:9px;line-height:1.35}
+  .badge{font-size:8px;padding:5px 7px}
+  .chart{height:190px}
+
+  .mobile-quick{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:8px;margin:1px 0 10px}
+  .mobile-quick button{
+    min-height:62px;border:1px solid rgba(255,255,255,.07);border-radius:17px;padding:10px;text-align:left;
+    background:linear-gradient(145deg,#171c23,#12171d);color:#fff;position:relative;overflow:hidden
+  }
+  .mobile-quick button:first-child{background:linear-gradient(145deg,#f28c28,#df7415);color:#17100a;border-color:transparent;animation:pulseSoft 3.2s ease-in-out infinite}
+  .mobile-quick b{display:block;font-size:10px;margin-top:10px}.mobile-quick span{font-size:18px;line-height:1}
+
+  .toolbar{display:block;margin-bottom:9px}
+  .toolbar>div{display:grid;grid-template-columns:1fr;gap:7px;width:100%;margin-bottom:7px}
+  .toolbar .input,.toolbar .select{width:100%;min-width:0;min-height:46px;padding:11px 12px}
+  .input,.select,.textarea{font-size:16px;min-height:46px;border-radius:14px;padding:11px 12px}
+  .textarea{min-height:88px}
+  .btn{min-height:44px;border-radius:14px;padding:10px 13px}
+  .btn:active,.service:active,.profile-card:active{transform:scale(.98)}
+
+  .sales-layout{display:block;height:auto}
+  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .service{min-height:112px;border-radius:17px;padding:12px;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+  .service span{font-size:20px}.service strong{font-size:11px;line-height:1.25;margin-top:18px}.service b{font-size:12px}
+  .cart{margin-top:10px;min-height:auto}.cart-items{max-height:none;overflow:visible}.cart-total{padding-bottom:3px}
+
+  .form-grid{grid-template-columns:1fr;gap:8px}.form-grid .full{grid-column:auto}
+  table{display:block;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  table::-webkit-scrollbar{display:none}
+  th,td{font-size:9px;padding:10px 8px}
+
+  .user-grid,.payroll-grid{grid-template-columns:1fr;gap:8px}
+  .user-card,.pay-card{border-radius:17px;padding:12px}
+
+  .profile-screen{height:100svh;overflow-y:auto;padding:18px 12px 110px}
+  .profile-wrap{width:100%}
+  .profile-top{margin-bottom:14px;align-items:flex-start}.profile-top h2{font-size:24px}.profile-top p{font-size:10px}
+  .profiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .profile-card{min-height:150px;padding:13px;border-radius:18px}
+  .profile-avatar{width:42px;height:42px;border-radius:13px}.profile-card strong{font-size:13px;margin-top:13px}.profile-card small{font-size:9px}.profile-kpi{font-size:9px;line-height:1.35}
+  .admin-login-panel{position:sticky;bottom:10px;margin:15px 0 0;max-width:none;border-radius:18px;backdrop-filter:blur(16px)}
+
+  .entry{display:block;min-height:100svh;padding:0;background:#0b0e12;overflow-y:auto}
+  .entry-card{min-height:100svh;width:100%;border:0;border-radius:0;padding:18px 15px 30px;background:radial-gradient(circle at 90% 0%,rgba(242,140,40,.10),transparent 26%),#101419;box-shadow:none}
+  .entry-head{margin-bottom:26px;padding-top:4px}.entry-head .brand h1{font-size:20px}.entry-grid{display:block}.entry-visual{display:none}.entry-form{padding:0}.entry-form h2{font-size:29px;letter-spacing:-.75px}.entry-form>p{font-size:11px;margin-bottom:20px}.entry-form .btn{min-height:50px;font-size:13px}
+
+  .modal-bg{align-items:end;padding:0;background:rgba(0,0,0,.62);backdrop-filter:blur(4px)}
+  .modal{width:100%;max-height:90svh;overflow:auto;border-radius:24px 24px 0 0;padding:18px 14px calc(20px + env(safe-area-inset-bottom));animation:sheetIn .28s cubic-bezier(.2,.8,.2,1)}
+  @keyframes sheetIn{from{transform:translateY(100%)}to{transform:none}}
+
+  .mobile-bottom-nav{
+    display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:8px;right:8px;bottom:calc(7px + env(safe-area-inset-bottom));
+    height:67px;z-index:750;border:1px solid rgba(255,255,255,.08);border-radius:21px;background:rgba(17,21,27,.91);
+    backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 18px 48px rgba(0,0,0,.42);padding:5px 5px
+  }
+  .mobile-nav-btn{
+    border:0;background:transparent;color:#8f99a7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    border-radius:15px;font-size:8px;font-weight:750;padding:3px 1px;min-width:0
+  }
+  .mobile-nav-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .mobile-nav-btn.active{color:var(--orange);background:rgba(242,140,40,.08)}
+  .mobile-nav-btn.sale-main{position:relative;color:#17100a;background:var(--orange);height:56px;margin-top:-14px;border-radius:18px;box-shadow:0 10px 30px rgba(242,140,40,.3)}
+  .mobile-nav-btn.sale-main svg{width:22px;height:22px}.mobile-nav-btn.sale-main span{font-weight:900}
+  .mobile-nav-btn.sale-main.active{color:#17100a;background:var(--orange)}
+
+  .mobile-more-backdrop{display:block;position:fixed;inset:0;z-index:760;background:rgba(0,0,0,.48);opacity:0;pointer-events:none;transition:.22s}
+  .mobile-more-backdrop.open{opacity:1;pointer-events:auto}
+  .mobile-more-sheet{
+    display:block;position:fixed;left:8px;right:8px;bottom:calc(82px + env(safe-area-inset-bottom));z-index:770;
+    background:rgba(22,27,34,.98);border:1px solid rgba(255,255,255,.08);border-radius:23px;padding:8px;
+    box-shadow:0 28px 70px rgba(0,0,0,.48);transform:translateY(120%);opacity:0;transition:.28s cubic-bezier(.2,.8,.2,1)
+  }
+  .mobile-more-sheet.open{transform:none;opacity:1}
+  .mobile-more-handle{width:38px;height:4px;border-radius:999px;background:#3b424d;margin:2px auto 10px}
+  .mobile-more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .mobile-more-item{
+    min-height:52px;border:1px solid rgba(255,255,255,.065);border-radius:15px;background:#1b2027;color:#f5f6f8;
+    text-align:left;padding:11px 12px;font-size:10px;font-weight:800
+  }
+  .mobile-more-item small{display:block;color:var(--muted);font-size:8px;font-weight:500;margin-top:3px}
+  .mobile-more-item.danger{color:#ff8585}
+
+  .mobile-cart-bar{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;position:fixed;left:10px;right:10px;
+    bottom:calc(82px + env(safe-area-inset-bottom));z-index:720;padding:10px 10px 10px 13px;border:1px solid rgba(242,140,40,.22);
+    border-radius:18px;background:rgba(22,27,34,.96);backdrop-filter:blur(18px);box-shadow:0 18px 44px rgba(0,0,0,.38);
+    transform:translateY(18px);opacity:0;pointer-events:none;transition:.22s
+  }
+  .mobile-cart-bar.visible{transform:none;opacity:1;pointer-events:auto}
+  .mobile-cart-bar small{display:block;color:var(--muted);font-size:8px}.mobile-cart-bar strong{display:block;font-size:14px;margin-top:2px}
+  .mobile-cart-bar .btn{min-height:39px;padding:8px 12px;font-size:10px}
+
+  #dashboard>.grid.two,#dashboard>.grid.two+ .grid.two{margin-top:8px!important}
+  #cash .grid.stats,#payroll .grid.stats,#stats .grid.stats{margin-top:0}
+}
+
+@media(max-width:390px){
+  .stats{gap:7px}.card{padding:11px}.metric strong{font-size:18px}
+  .services-grid{gap:7px}.service{min-height:105px;padding:10px}
+  .profiles{grid-template-columns:1fr 1fr}.profile-card{min-height:142px}
+  .mobile-quick{grid-template-columns:1.2fr 1fr 1fr}.mobile-quick b{font-size:9px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+</style>
+</head>
+<body>
+<div id="splash"><div class="splash-orbit o2"></div><div class="splash-orbit o1"></div><div class="splash-box"><div class="splash-wordmark"><span class="gest">Gest</span><span class="ok">OK</span></div><div class="splash-sub">Bienvenidos a GestOK Barberías</div><div class="splash-line"></div></div><div class="splash-actions"><button class="hero-btn primary" id="heroSearchBtn">¿Qué es lo que buscás?</button><button class="hero-btn" id="heroAboutBtn">Conocer GestOK</button></div><button class="splash-enter" id="splashEnterBtn">Entrar</button><div class="splash-footer"><strong>GestOK.</strong> Sistema para ventas, turnos, clientes, caja y control comercial.</div></div>
+
+<section id="onboarding" class="entry hidden">
+  <div class="entry-card">
+    <div class="entry-head"><div class="brand"><div><h1>Gest<span class="ok">OK</span> Barberías</h1><p>Configuración inicial del negocio</p></div></div><span class="badge">Primer ingreso</span></div>
+    <div class="entry-grid">
+      <div class="entry-visual"><div class="hero-kicker">GestOK Barberías</div><div class="hero-title">Un sistema compartido para todo el equipo.</div><div class="hero-copy">El administrador crea la barbería y controla usuarios, precios, caja, sueldos y estadísticas. Los empleados pueden registrar ventas, atender turnos, consultar clientes e historial sin usar contraseña.</div><div class="mini-kpis"><div class="mini-kpi"><span>Administrador</span><strong>Control total</strong></div><div class="mini-kpi"><span>Empleados</span><strong>Ingreso rápido</strong></div><div class="mini-kpi"><span>Ventas</span><strong>Por usuario</strong></div><div class="mini-kpi"><span>Sueldos</span><strong>Comisiones</strong></div></div></div>
+      <div class="entry-form"><h2>Crear barbería</h2><p>Este será el único usuario con contraseña y con permiso para agregar empleados o modificar información sensible.</p><div class="field"><label>Nombre de la barbería</label><input id="setupBusiness" class="input" placeholder="Ej. Barber House"></div><div class="field"><label>Nombre del administrador</label><input id="setupAdmin" class="input" placeholder="Ej. Carlos"></div><div class="field"><label>Contraseña del administrador</label><input id="setupPassword" class="input" type="password" placeholder="Contraseña"></div><div class="field"><label>Repetir contraseña</label><input id="setupPassword2" class="input" type="password" placeholder="Repetir contraseña"></div><button id="createBusiness" class="btn btn-primary btn-full">Crear GestOK Barberías</button><div class="small-note">Esta demo guarda los datos en el navegador. La versión online reemplazará este almacenamiento por una base de datos central.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="profilesScreen" class="profile-screen hidden"><div class="profile-wrap"><div class="profile-top"><div><h2 id="profilesBusiness">GestOK Barberías</h2><p>Seleccioná quién está usando el sistema.</p></div><div class="brand-plain">Gest<span class="ok">OK</span> Barberías</div></div><div id="profilesGrid" class="profiles"></div><div id="adminLoginPanel" class="admin-login-panel hidden"><div class="card-head"><div><h3>Ingreso del administrador</h3><p id="adminLoginName"></p></div><span class="badge">Protegido</span></div><div class="field"><label>Contraseña</label><input id="adminLoginPassword" class="input" type="password" placeholder="Contraseña"></div><button id="adminLoginBtn" class="btn btn-primary btn-full">Ingresar</button></div></div></section>
+
+<section id="app" class="app hidden">
+<aside class="sidebar">
+  <div class="side-brand"><h2>Gest<span class="ok">OK</span> Barberías</h2><p id="sideBusiness"></p></div>
+  <div class="current-user"><div id="currentAvatar" class="current-avatar">AD</div><div><strong id="currentName">Usuario</strong><span id="currentRole">Rol</span></div></div>
+  <nav class="nav">
+    <button class="nav-btn active" data-view="dashboard">Resumen</button>
+    <button class="nav-btn" data-view="sales">Ventas</button>
+    <button class="nav-btn" data-view="appointments">Turnos</button>
+    <button class="nav-btn" data-view="clients">Clientes</button>
+    <button class="nav-btn" data-view="history">Historial</button>
+    <button class="nav-btn" data-view="stats">Estadísticas</button>
+    <button class="nav-btn admin-only" data-view="cash">Caja y gastos</button>
+    <button class="nav-btn admin-only" data-view="services">Servicios y precios</button>
+    <button class="nav-btn admin-only" data-view="payroll">Sueldos</button>
+    <button class="nav-btn admin-only" data-view="users">Usuarios</button>
+  </nav>
+  <div class="side-bottom"><button id="switchUser" class="btn btn-secondary btn-full">Cambiar usuario</button></div>
+</aside>
+<div class="content">
+<header class="topbar"><div><div class="mobile-wordmark">Gest<span class="ok">OK</span><span class="barberias">Barberías</span></div><h1 id="topTitle">Resumen</h1><p id="topSubtitle">Actividad general de la barbería</p></div><div class="top-actions"><span class="chip" id="todayChip"></span><span class="chip" id="sessionChip"></span></div></header>
+<main class="main">
+<section id="dashboard" class="view active">
+  <div class="mobile-quick">
+    <button onclick="go('sales')"><span>＋</span><b>Nueva venta</b></button>
+    <button onclick="go('appointments')"><span>◷</span><b>Nuevo turno</b></button>
+    <button onclick="go('clients')"><span>＋</span><b>Cliente</b></button>
+  </div>
+  <div class="grid stats"><div class="card metric"><span>Ventas de hoy</span><strong id="kpiToday">$0</strong><small id="kpiTodayCount">0 ventas</small></div><div class="card metric"><span>Mis ventas de hoy</span><strong id="kpiMine">$0</strong><small id="kpiMineCount">0 ventas</small></div><div class="card metric"><span>Turnos de hoy</span><strong id="kpiAppointments">0</strong><small>Agenda activa</small></div><div class="card metric"><span>Ticket promedio</span><strong id="kpiAvg">$0</strong><small>Promedio general</small></div></div>
+  <div class="grid two" style="margin-top:12px"><div class="card"><div class="card-head"><div><h3>Ventas últimos 7 días</h3><p>Facturación registrada</p></div><span class="badge">Semana</span></div><div class="chart"><canvas id="salesChart"></canvas></div></div><div class="card"><div class="card-head"><div><h3>Actividad por usuario</h3><p>Ventas acumuladas</p></div><span class="badge blue">Equipo</span></div><div id="userRevenueList" class="list"></div></div></div>
+  <div class="grid two" style="margin-top:12px"><div class="card"><div class="card-head"><div><h3>Últimas ventas</h3><p>Movimientos recientes</p></div><span class="badge green">En vivo</span></div><div id="recentSales" class="list"></div></div><div class="card"><div class="card-head"><div><h3>Próximos turnos</h3><p>Agenda del día</p></div><span class="badge">Hoy</span></div><div id="todayAppointments" class="list"></div></div></div>
+</section>
+
+<section id="sales" class="view"><div class="sales-layout"><div class="card"><div class="section-head"><div><h2>Nueva venta</h2><p>La operación quedará registrada a nombre del usuario activo.</p></div></div><div class="toolbar"><div><select id="saleClient" class="select"><option>Cliente ocasional</option></select><select id="paymentMethod" class="select"><option>Efectivo</option><option>Transferencia</option><option>Tarjeta</option><option>Otro</option></select></div><div><input id="serviceSearch" class="input" placeholder="Buscar servicio"></div></div><div id="servicesGrid" class="services-grid"></div></div><div class="card cart"><div class="card-head"><div><h3>Detalle de venta</h3><p>Servicios seleccionados</p></div><button id="clearCart" class="btn btn-secondary">Vaciar</button></div><div id="cartItems" class="cart-items"></div><div class="cart-total"><div class="total-line"><span>Usuario</span><strong id="saleUserName"></strong></div><div class="total-line"><span>Subtotal</span><strong id="subtotal">$0</strong></div><div class="total-line big"><span>Total</span><span id="total">$0</span></div><button id="finishSale" class="btn btn-primary btn-full" style="margin-top:10px">Registrar venta</button></div></div></div></section>
+
+<section id="appointments" class="view"><div class="section-head"><div><h2>Turnos</h2><p>Agenda compartida por todo el equipo.</p></div></div><div class="grid two"><div class="card"><div class="form-grid"><div class="field-mini"><label>Cliente</label><input id="apClient" class="input" placeholder="Nombre"></div><div class="field-mini"><label>Barbero</label><select id="apBarber" class="select"></select></div><div class="field-mini"><label>Fecha</label><input id="apDate" class="input" type="date"></div><div class="field-mini"><label>Hora</label><input id="apTime" class="input" type="time"></div><div class="field-mini full"><label>Servicio</label><select id="apService" class="select"></select></div><div class="field-mini full"><label>Notas</label><textarea id="apNotes" class="textarea" placeholder="Opcional"></textarea></div><div class="full"><button id="saveAppointment" class="btn btn-primary btn-full">Guardar turno</button></div></div></div><div class="card"><div class="card-head"><div><h3>Agenda</h3><p>Turnos próximos</p></div><span class="badge blue">Compartido</span></div><div id="appointmentList" class="list"></div></div></div></section>
+
+<section id="clients" class="view"><div class="section-head"><div><h2>Clientes</h2><p>Registro, contacto e historial de visitas.</p></div></div><div class="grid two"><div class="card"><div class="form-grid"><div class="field-mini"><label>Nombre</label><input id="clientName" class="input" placeholder="Nombre y apellido"></div><div class="field-mini"><label>Teléfono</label><input id="clientPhone" class="input" placeholder="WhatsApp"></div><div class="field-mini full"><label>Notas</label><textarea id="clientNotes" class="textarea" placeholder="Preferencias, corte habitual, observaciones..."></textarea></div><div class="full"><button id="addClient" class="btn btn-primary btn-full">Agregar cliente</button></div></div></div><div class="card"><div id="clientsTable"></div></div></div></section>
+
+<section id="history" class="view"><div class="section-head"><div><h2>Historial</h2><p>Ventas registradas por fecha, cliente y usuario.</p></div></div><div class="card"><div class="toolbar"><div><input id="historySearch" class="input" placeholder="Buscar cliente, usuario o servicio"></div><div><button id="exportCSV" class="btn btn-secondary">Exportar CSV</button></div></div><div id="historyTable"></div></div></section>
+
+<section id="stats" class="view"><div class="section-head"><div><h2>Estadísticas</h2><p>Rendimiento comercial y del equipo.</p></div></div><div class="grid stats"><div class="card metric"><span>Facturación total</span><strong id="statRevenue">$0</strong><small>Acumulado</small></div><div class="card metric"><span>Ventas totales</span><strong id="statSales">0</strong><small>Operaciones</small></div><div class="card metric"><span>Clientes</span><strong id="statClients">0</strong><small>Registrados</small></div><div class="card metric"><span>Servicio líder</span><strong id="statTop" style="font-size:17px">—</strong><small>Más vendido</small></div></div><div class="grid two" style="margin-top:12px"><div class="card"><div class="card-head"><div><h3>Facturación por usuario</h3><p>Comparativa del equipo</p></div></div><div class="chart"><canvas id="userChart"></canvas></div></div><div class="card"><div class="card-head"><div><h3>Servicios más vendidos</h3><p>Ranking acumulado</p></div></div><div id="serviceRanking" class="list"></div></div></div></section>
+
+<section id="cash" class="view admin-only-view"><div class="section-head"><div><h2>Caja y gastos</h2><p>Control diario de apertura, movimientos y cierre.</p></div></div><div class="cash-status"><div style="display:flex;align-items:center;gap:10px"><div id="cashLight" class="cash-light"></div><div><strong id="cashStatusText">Caja cerrada</strong><div id="cashStatusSub" style="font-size:9px;color:var(--muted);margin-top:3px">Abrí la caja para comenzar</div></div></div><button id="cashActionBtn" class="btn btn-primary">Abrir caja</button></div><div class="grid stats" style="margin-top:12px"><div class="card metric"><span>Ventas en efectivo</span><strong id="cashCashSales">$0</strong><small>Hoy</small></div><div class="card metric"><span>Otros medios</span><strong id="cashOtherSales">$0</strong><small>Transferencia / tarjeta</small></div><div class="card metric"><span>Gastos</span><strong id="cashExpenses">$0</strong><small>Hoy</small></div><div class="card metric"><span>Saldo estimado</span><strong id="cashBalance">$0</strong><small>Caja física estimada</small></div></div><div class="grid two" style="margin-top:12px"><div class="card"><div class="card-head"><div><h3>Registrar gasto</h3><p>Solo administrador</p></div></div><div class="form-grid"><div class="field-mini"><label>Concepto</label><input id="expenseConcept" class="input" placeholder="Ej. Limpieza"></div><div class="field-mini"><label>Monto</label><input id="expenseAmount" class="input" type="number" min="0" placeholder="$"></div><div class="field-mini full"><label>Notas</label><input id="expenseNotes" class="input" placeholder="Opcional"></div><div class="full"><button id="addExpense" class="btn btn-primary btn-full">Registrar gasto</button></div></div></div><div class="card"><div class="card-head"><div><h3>Movimientos del día</h3><p>Gastos registrados</p></div><span class="badge yellow">Caja</span></div><div id="expenseList" class="list"></div></div></div></section>
+
+<section id="services" class="view admin-only-view"><div class="section-head"><div><h2>Servicios y precios</h2><p>Solo el administrador puede modificar esta sección.</p></div></div><div class="card"><div class="toolbar"><div><input id="newServiceName" class="input" placeholder="Servicio"><input id="newServicePrice" class="input" type="number" placeholder="Precio"></div><div><button id="addService" class="btn btn-primary">Agregar servicio</button></div></div><div id="servicesTable"></div></div></section>
+
+<section id="payroll" class="view admin-only-view"><div class="section-head"><div><h2>Repartición de sueldos</h2><p>Comisiones calculadas automáticamente según las ventas de cada empleado.</p></div><div><select id="payrollPeriod" class="select"><option value="all">Todo el historial</option><option value="month">Mes actual</option><option value="today">Hoy</option></select></div></div><div class="grid stats"><div class="card metric"><span>Facturación del período</span><strong id="payRevenue">$0</strong><small>Base para reparto</small></div><div class="card metric"><span>Total para empleados</span><strong id="payEmployees">$0</strong><small>Comisiones + fijo</small></div><div class="card metric"><span>Parte del negocio</span><strong id="payBusiness">$0</strong><small>Después de reparto</small></div><div class="card metric"><span>Empleados</span><strong id="payCount">0</strong><small>Configurados</small></div></div><div id="payrollCards" class="payroll-grid" style="margin-top:12px"></div></section>
+
+<section id="users" class="view admin-only-view"><div class="section-head"><div><h2>Usuarios</h2><p>Solo el administrador principal puede crear o editar empleados.</p></div><button id="openAddUser" class="btn btn-primary">Agregar usuario</button></div><div id="usersGrid" class="user-grid"></div></section>
+</main>
+
+<div id="mobileMoreBackdrop" class="mobile-more-backdrop"></div>
+<div id="mobileMoreSheet" class="mobile-more-sheet">
+  <div class="mobile-more-handle"></div>
+  <div class="mobile-more-grid">
+    <button class="mobile-more-item" data-view="history">Historial<small>Operaciones registradas</small></button>
+    <button class="mobile-more-item" data-view="stats">Estadísticas<small>Rendimiento del negocio</small></button>
+    <button class="mobile-more-item admin-only" data-view="cash">Caja y gastos<small>Apertura, cierre y movimientos</small></button>
+    <button class="mobile-more-item admin-only" data-view="services">Servicios y precios<small>Catálogo de la barbería</small></button>
+    <button class="mobile-more-item admin-only" data-view="payroll">Sueldos<small>Comisiones y reparto</small></button>
+    <button class="mobile-more-item admin-only" data-view="users">Usuarios<small>Equipo y permisos</small></button>
+    <button id="mobileSwitchUser" class="mobile-more-item danger">Cambiar usuario<small>Volver a perfiles</small></button>
+  </div>
+</div>
+
+<div id="mobileCartBar" class="mobile-cart-bar">
+  <div><small id="mobileCartCount">0 servicios</small><strong id="mobileCartTotal">$0</strong></div>
+  <button id="mobileCartCheckout" class="btn btn-primary">Ver venta</button>
+</div>
+
+<nav class="mobile-bottom-nav" aria-label="Navegación principal">
+  <button class="mobile-nav-btn active" data-view="dashboard" aria-label="Resumen">
+    <svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/></svg><span>Inicio</span>
+  </button>
+  <button class="mobile-nav-btn" data-view="appointments" aria-label="Turnos">
+    <svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M7 3v4M17 3v4M7 10h10"/></svg><span>Turnos</span>
+  </button>
+  <button class="mobile-nav-btn sale-main" data-view="sales" aria-label="Nueva venta">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Venta</span>
+  </button>
+  <button class="mobile-nav-btn" data-view="clients" aria-label="Clientes">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-4 3-6 7-6s6.3 2 7 6"/></svg><span>Clientes</span>
+  </button>
+  <button id="mobileMoreBtn" class="mobile-nav-btn" type="button" aria-label="Más opciones">
+    <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span>Más</span>
+  </button>
+</nav>
+
+</div>
+</section>
+
+<div id="addUserModal" class="modal-bg hidden"><div class="modal"><h3>Nuevo usuario</h3><p>Los empleados no usan contraseña. Su acceso está pensado para dispositivos previamente autorizados por la barbería.</p><div class="field"><label>Nombre</label><input id="newUserName" class="input" placeholder="Ej. Nicolás"></div><div class="field"><label>Rol</label><select id="newUserRole" class="select"><option value="employee">Empleado / Barbero</option><option value="cashier">Recepción / Caja</option></select></div><div class="field"><label>Comisión sobre sus ventas (%)</label><input id="newUserCommission" class="input" type="number" min="0" max="100" value="50"></div><div class="field"><label>Fijo adicional por período ($)</label><input id="newUserFixed" class="input" type="number" min="0" value="0"></div><div class="modal-actions"><button id="cancelAddUser" class="btn btn-secondary" style="flex:1">Cancelar</button><button id="saveUser" class="btn btn-primary" style="flex:1">Crear usuario</button></div></div></div>
+
+<div id="cashModal" class="modal-bg hidden"><div class="modal"><h3 id="cashModalTitle">Abrir caja</h3><p id="cashModalText">Ingresá el efectivo inicial disponible.</p><div id="cashOpenFields"><div class="field"><label>Efectivo inicial</label><input id="cashOpeningAmount" class="input" type="number" min="0" value="0"></div></div><div id="cashCloseFields" class="hidden"><div class="field"><label>Efectivo contado al cierre</label><input id="cashClosingAmount" class="input" type="number" min="0" value="0"></div></div><div class="modal-actions"><button id="cancelCashModal" class="btn btn-secondary" style="flex:1">Cancelar</button><button id="confirmCashModal" class="btn btn-primary" style="flex:1">Confirmar</button></div></div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const money=n=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(Number(n)||0);
+const isoToday=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const KEY='gestok_barberias_full_v1';
+let state=loadState();let currentUser=null;let cart=[];
+function defaultState(){return{business:null,users:[],services:[{id:'s1',name:'Corte clásico',price:9000},{id:'s2',name:'Corte + barba',price:14000},{id:'s3',name:'Perfilado de barba',price:7000},{id:'s4',name:'Corte premium',price:12000},{id:'s5',name:'Lavado + styling',price:6000},{id:'s6',name:'Diseño / líneas',price:5000}],clients:[],sales:[],appointments:[],expenses:[],cashSessions:[]}}
+function loadState(){try{return JSON.parse(localStorage.getItem(KEY))||defaultState()}catch(e){return defaultState()}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
+function initials(n){return(n||'?').split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase()}
+function isAdmin(){return currentUser?.role==='admin'}
+function roleLabel(r){return r==='admin'?'Administrador':r==='cashier'?'Recepción / Caja':'Empleado / Barbero'}
+function activeCash(){return state.cashSessions.find(c=>!c.closedAt)||null}
+
+let splashPassed=false;function continueFromSplash(){if(splashPassed)return;splashPassed=true;$('#splash').classList.add('hidden');state.business?showProfiles():$('#onboarding').classList.remove('hidden')}setTimeout(continueFromSplash,2600);$('#splashEnterBtn').onclick=continueFromSplash;$('#heroSearchBtn').onclick=()=>toast('GestOK Barberías te permite registrar ventas, turnos, clientes, caja y estadísticas');$('#heroAboutBtn').onclick=()=>toast('GestOK es una solución pensada para gestionar negocios de forma simple y profesional');
+
+$('#createBusiness').onclick=()=>{const business=$('#setupBusiness').value.trim(),admin=$('#setupAdmin').value.trim(),p=$('#setupPassword').value,p2=$('#setupPassword2').value;if(!business||!admin||!p){toast('Completá todos los datos');return}if(p.length<4){toast('La contraseña debe tener al menos 4 caracteres');return}if(p!==p2){toast('Las contraseñas no coinciden');return}state.business={id:uid(),name:business};state.users=[{id:uid(),name:admin,role:'admin',password:p,commission:0,fixed:0,active:true}];save();$('#onboarding').classList.add('hidden');showProfiles()};
+
+function showProfiles(){currentUser=null;$('#app').classList.add('hidden');$('#profilesScreen').classList.remove('hidden');$('#adminLoginPanel').classList.add('hidden');$('#profilesBusiness').textContent=state.business?.name||'GestOK Barberías';$('#profilesGrid').innerHTML=state.users.filter(u=>u.active!==false).map(u=>{const ts=state.sales.filter(s=>s.userId===u.id&&s.date.slice(0,10)===isoToday()),total=ts.reduce((a,s)=>a+s.total,0);return`<button class="profile-card ${u.role==='admin'?'admin':''}" onclick="selectProfile('${u.id}')"><div class="profile-avatar">${initials(u.name)}</div><strong>${u.name}</strong><small>${roleLabel(u.role)}</small><div class="profile-kpi">${ts.length} ventas hoy · ${money(total)}</div></button>`}).join('')}
+window.selectProfile=id=>{const u=state.users.find(x=>x.id===id);if(!u)return;if(u.role==='admin'){const p=$('#adminLoginPanel');p.classList.remove('hidden');p.dataset.user=id;$('#adminLoginName').textContent=u.name;$('#adminLoginPassword').value='';$('#adminLoginPassword').focus()}else enterApp(u)};
+$('#adminLoginBtn').onclick=()=>{const u=state.users.find(x=>x.id===$('#adminLoginPanel').dataset.user);if(!u)return;if($('#adminLoginPassword').value!==u.password){toast('Contraseña incorrecta');return}enterApp(u)};
+$('#adminLoginPassword').addEventListener('keydown',e=>{if(e.key==='Enter')$('#adminLoginBtn').click()});
+function enterApp(u){currentUser=u;$('#profilesScreen').classList.add('hidden');$('#app').classList.remove('hidden');$('#sideBusiness').textContent=state.business.name;$('#currentName').textContent=u.name;$('#currentRole').textContent=roleLabel(u.role);$('#currentAvatar').textContent=initials(u.name);$('#sessionChip').textContent=roleLabel(u.role);$$('.admin-only').forEach(x=>x.classList.toggle('hidden',!isAdmin()));go('dashboard');renderAll()}
+$('#switchUser').onclick=showProfiles;
+
+function closeMobileMore(){const s=$('#mobileMoreSheet'),b=$('#mobileMoreBackdrop');if(s)s.classList.remove('open');if(b)b.classList.remove('open')}function updateMobileCart(){const bar=$('#mobileCartBar');if(!bar)return;const total=cart.reduce((a,i)=>a+i.price*i.qty,0),count=cart.reduce((a,i)=>a+i.qty,0),active=$('.view.active')?.id;$('#mobileCartTotal').textContent=money(total);$('#mobileCartCount').textContent=`${count} ${count===1?'servicio':'servicios'}`;bar.classList.toggle('visible',active==='sales'&&count>0)}function go(id){if(!isAdmin()&&['cash','services','payroll','users'].includes(id))id='dashboard';$$('.view').forEach(v=>v.classList.remove('active'));$('#'+id).classList.add('active');$$('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===id));$$('.mobile-nav-btn[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===id));const titles={dashboard:['Resumen','Actividad general de la barbería'],sales:['Ventas','Registrar operaciones'],appointments:['Turnos','Agenda compartida'],clients:['Clientes','Base de clientes'],history:['Historial','Registro de operaciones'],stats:['Estadísticas','Rendimiento comercial'],cash:['Caja y gastos','Control diario de caja'],services:['Servicios y precios','Configuración del catálogo'],payroll:['Sueldos','Repartición y comisiones'],users:['Usuarios','Gestión del equipo']};$('#topTitle').textContent=titles[id][0];$('#topSubtitle').textContent=titles[id][1];closeMobileMore();updateMobileCart();requestAnimationFrame(drawCharts)}
+$$('.nav-btn').forEach(b=>b.onclick=()=>go(b.dataset.view));$$('.mobile-nav-btn[data-view]').forEach(b=>b.onclick=()=>go(b.dataset.view));$$('.mobile-more-item[data-view]').forEach(b=>b.onclick=()=>go(b.dataset.view));$('#mobileMoreBtn').onclick=()=>{$('#mobileMoreSheet').classList.toggle('open');$('#mobileMoreBackdrop').classList.toggle('open')};$('#mobileMoreBackdrop').onclick=closeMobileMore;$('#mobileSwitchUser').onclick=()=>{closeMobileMore();showProfiles()};$('#mobileCartCheckout').onclick=()=>{$('.cart')?.scrollIntoView({behavior:'smooth',block:'start'})};
+
+function renderAll(){if(!currentUser)return;$('#todayChip').textContent=new Date().toLocaleDateString('es-AR',{weekday:'short',day:'2-digit',month:'short'});$('#saleUserName').textContent=currentUser.name;renderSelects();renderServices();renderCart();renderDashboard();renderAppointments();renderClients();renderHistory();renderStats();if(isAdmin()){renderCash();renderServiceTable();renderUsers();renderPayroll()}requestAnimationFrame(drawCharts)}
+function renderSelects(){$('#saleClient').innerHTML='<option>Cliente ocasional</option>'+state.clients.map(c=>`<option>${c.name}</option>`).join('');const staff=state.users.filter(u=>u.active!==false&&(u.role==='employee'||u.role==='admin'));$('#apBarber').innerHTML=staff.map(u=>`<option value="${u.id}">${u.name}</option>`).join('');$('#apService').innerHTML=state.services.map(s=>`<option value="${s.id}">${s.name}</option>`).join('');if(!$('#apDate').value)$('#apDate').value=isoToday()}
+
+function renderServices(){const f=($('#serviceSearch').value||'').toLowerCase();$('#servicesGrid').innerHTML=state.services.filter(s=>s.name.toLowerCase().includes(f)).map(s=>`<button class="service" onclick="addToCart('${s.id}')"><span>✂</span><strong>${s.name}</strong><b>${money(s.price)}</b></button>`).join('')||'<div class="empty">No se encontraron servicios.</div>'}
+$('#serviceSearch').oninput=renderServices;
+window.addToCart=id=>{const s=state.services.find(x=>x.id===id);if(!s)return;const x=cart.find(i=>i.id===id);x?x.qty++:cart.push({...s,qty:1});renderCart()};
+window.removeCart=id=>{cart=cart.filter(x=>x.id!==id);renderCart()};
+function renderCart(){$('#cartItems').innerHTML=cart.length?cart.map(i=>`<div class="row"><div><strong>${i.name}</strong><small>${i.qty} × ${money(i.price)}</small></div><div style="display:flex;align-items:center;gap:8px"><span class="money">${money(i.qty*i.price)}</span><button class="btn btn-danger" onclick="removeCart('${i.id}')">×</button></div></div>`).join(''):'<div class="empty">Agregá servicios a la venta.</div>';const t=cart.reduce((a,i)=>a+i.price*i.qty,0);$('#subtotal').textContent=money(t);$('#total').textContent=money(t);updateMobileCart()}
+$('#clearCart').onclick=()=>{cart=[];renderCart()};
+$('#finishSale').onclick=()=>{if(!cart.length){toast('Agregá al menos un servicio');return}const total=cart.reduce((a,i)=>a+i.price*i.qty,0);state.sales.unshift({id:uid(),date:new Date().toISOString(),userId:currentUser.id,userName:currentUser.name,client:$('#saleClient').value,payment:$('#paymentMethod').value,items:cart.map(i=>({...i})),total});cart=[];save();renderAll();toast('Venta registrada correctamente')};
+
+function renderDashboard(){const today=isoToday(),ts=state.sales.filter(s=>s.date.slice(0,10)===today),mine=ts.filter(s=>s.userId===currentUser.id),totalToday=ts.reduce((a,s)=>a+s.total,0),mineTotal=mine.reduce((a,s)=>a+s.total,0),rev=state.sales.reduce((a,s)=>a+s.total,0);$('#kpiToday').textContent=money(totalToday);$('#kpiTodayCount').textContent=`${ts.length} ventas`;$('#kpiMine').textContent=money(mineTotal);$('#kpiMineCount').textContent=`${mine.length} ventas`;$('#kpiAppointments').textContent=state.appointments.filter(a=>a.date===today&&a.status!=='cancelado').length;$('#kpiAvg').textContent=money(state.sales.length?rev/state.sales.length:0);$('#recentSales').innerHTML=state.sales.slice(0,5).map(s=>`<div class="row"><div><strong>${s.client}</strong><small>${s.userName} · ${s.payment}</small></div><span class="money">${money(s.total)}</span></div>`).join('')||'<div class="empty">Todavía no hay ventas.</div>';$('#todayAppointments').innerHTML=state.appointments.filter(a=>a.date===today&&a.status!=='cancelado').slice(0,6).map(a=>`<div class="row"><div><strong>${a.time} · ${a.client}</strong><small>${a.service}</small></div><span class="badge">${a.barber}</span></div>`).join('')||'<div class="empty">No hay turnos para hoy.</div>';$('#userRevenueList').innerHTML=state.users.filter(u=>u.active!==false).map(u=>{const t=state.sales.filter(s=>s.userId===u.id).reduce((a,s)=>a+s.total,0);return`<div class="row"><div><strong>${u.name}</strong><small>${roleLabel(u.role)}</small></div><span class="money">${money(t)}</span></div>`}).join('')}
+
+$('#saveAppointment').onclick=()=>{const client=$('#apClient').value.trim(),user=state.users.find(u=>u.id===$('#apBarber').value),service=state.services.find(s=>s.id===$('#apService').value),date=$('#apDate').value,time=$('#apTime').value,notes=$('#apNotes').value.trim();if(!client||!user||!service||!date||!time){toast('Completá los datos del turno');return}state.appointments.push({id:uid(),client,barberId:user.id,barber:user.name,serviceId:service.id,service:service.name,date,time,notes,status:'pendiente'});state.appointments.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));$('#apClient').value='';$('#apNotes').value='';save();renderAll();toast('Turno guardado')};
+window.setAppointmentStatus=(id,status)=>{const a=state.appointments.find(x=>x.id===id);if(!a)return;a.status=status;save();renderAll();toast('Turno actualizado')};
+function renderAppointments(){const list=state.appointments.filter(a=>a.date>=isoToday());$('#appointmentList').innerHTML=list.length?list.map(a=>`<div class="row"><div><strong>${a.client}</strong><small>${a.date} · ${a.time} · ${a.service} · ${a.barber}</small>${a.notes?`<small>${a.notes}</small>`:''}</div><div style="display:flex;gap:5px;align-items:center"><span class="badge ${a.status==='atendido'?'green':a.status==='cancelado'?'red':''}">${a.status}</span>${a.status==='pendiente'?`<button class="btn btn-green" onclick="setAppointmentStatus('${a.id}','atendido')">Atendido</button><button class="btn btn-danger" onclick="setAppointmentStatus('${a.id}','cancelado')">Cancelar</button>`:''}</div></div>`).join(''):'<div class="empty">No hay turnos próximos.</div>'}
+
+$('#addClient').onclick=()=>{const name=$('#clientName').value.trim(),phone=$('#clientPhone').value.trim(),notes=$('#clientNotes').value.trim();if(!name){toast('Ingresá un nombre');return}state.clients.push({id:uid(),name,phone,notes});$('#clientName').value='';$('#clientPhone').value='';$('#clientNotes').value='';save();renderAll();toast('Cliente agregado')};
+function renderClients(){$('#clientsTable').innerHTML=state.clients.length?`<table><thead><tr><th>Cliente</th><th>Teléfono</th><th>Visitas</th><th>Gastado</th><th>Última visita</th></tr></thead><tbody>${state.clients.map(c=>{const s=state.sales.filter(x=>x.client===c.name);const last=s[0]?.date?new Date(s[0].date).toLocaleDateString('es-AR'):'—';return`<tr><td><strong>${c.name}</strong>${c.notes?`<div style="color:var(--muted);font-size:8px;margin-top:3px">${c.notes}</div>`:''}</td><td>${c.phone||'—'}</td><td>${s.length}</td><td class="money">${money(s.reduce((a,x)=>a+x.total,0))}</td><td>${last}</td></tr>`}).join('')}</tbody></table>`:'<div class="empty">No hay clientes cargados.</div>'}
+
+function filteredHistory(){const f=($('#historySearch').value||'').toLowerCase();return state.sales.filter(s=>`${s.client} ${s.userName} ${s.payment} ${s.items.map(i=>i.name).join(' ')}`.toLowerCase().includes(f))}
+function renderHistory(){const r=filteredHistory();$('#historyTable').innerHTML=r.length?`<table><thead><tr><th>Fecha</th><th>Cliente</th><th>Usuario</th><th>Servicios</th><th>Pago</th><th>Total</th></tr></thead><tbody>${r.map(s=>`<tr><td>${new Date(s.date).toLocaleString('es-AR',{dateStyle:'short',timeStyle:'short'})}</td><td>${s.client}</td><td>${s.userName}</td><td>${s.items.map(i=>i.name+(i.qty>1?' x'+i.qty:'')).join(', ')}</td><td>${s.payment}</td><td class="money">${money(s.total)}</td></tr>`).join('')}</tbody></table>`:'<div class="empty">No hay ventas registradas.</div>'}
+$('#historySearch').oninput=renderHistory;
+$('#exportCSV').onclick=()=>{const rows=[['Fecha','Cliente','Usuario','Servicios','Pago','Total'],...state.sales.map(s=>[new Date(s.date).toLocaleString('es-AR'),s.client,s.userName,s.items.map(i=>`${i.name} x${i.qty}`).join(' | '),s.payment,s.total])];const csv=rows.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='gestok-barberias-historial.csv';a.click();URL.revokeObjectURL(url)};
+
+function serviceCounts(){const m={};state.sales.forEach(s=>s.items.forEach(i=>m[i.name]=(m[i.name]||0)+i.qty));return Object.entries(m).sort((a,b)=>b[1]-a[1])}
+function renderStats(){const rev=state.sales.reduce((a,s)=>a+s.total,0),rank=serviceCounts();$('#statRevenue').textContent=money(rev);$('#statSales').textContent=state.sales.length;$('#statClients').textContent=state.clients.length;$('#statTop').textContent=rank[0]?.[0]||'—';$('#serviceRanking').innerHTML=rank.length?rank.slice(0,7).map(([n,c],i)=>`<div class="row"><div><strong>#${i+1} ${n}</strong><small>${c} realizados</small></div><span class="badge">${c}</span></div>`).join(''):'<div class="empty">Se mostrará al registrar ventas.</div>'}
+
+function renderCash(){const today=isoToday(),session=activeCash(),todaySales=state.sales.filter(s=>s.date.slice(0,10)===today),cashSales=todaySales.filter(s=>s.payment==='Efectivo').reduce((a,s)=>a+s.total,0),otherSales=todaySales.filter(s=>s.payment!=='Efectivo').reduce((a,s)=>a+s.total,0),expenses=state.expenses.filter(e=>e.date.slice(0,10)===today).reduce((a,e)=>a+e.amount,0),opening=session?.openingAmount||0,balance=opening+cashSales-expenses;$('#cashCashSales').textContent=money(cashSales);$('#cashOtherSales').textContent=money(otherSales);$('#cashExpenses').textContent=money(expenses);$('#cashBalance').textContent=money(balance);$('#cashLight').classList.toggle('open',!!session);$('#cashStatusText').textContent=session?'Caja abierta':'Caja cerrada';$('#cashStatusSub').textContent=session?`Abierta ${new Date(session.openedAt).toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})} · Inicial ${money(session.openingAmount)}`:'Abrí la caja para comenzar';$('#cashActionBtn').textContent=session?'Cerrar caja':'Abrir caja';$('#cashActionBtn').className='btn '+(session?'btn-danger':'btn-primary');$('#expenseList').innerHTML=state.expenses.filter(e=>e.date.slice(0,10)===today).map(e=>`<div class="row"><div><strong>${e.concept}</strong><small>${new Date(e.date).toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}${e.notes?' · '+e.notes:''}</small></div><span class="money">-${money(e.amount)}</span></div>`).join('')||'<div class="empty">No hay gastos hoy.</div>'}
+$('#cashActionBtn').onclick=()=>{if(!isAdmin())return;const session=activeCash();$('#cashModal').classList.remove('hidden');$('#cashOpenFields').classList.toggle('hidden',!!session);$('#cashCloseFields').classList.toggle('hidden',!session);$('#cashModalTitle').textContent=session?'Cerrar caja':'Abrir caja';$('#cashModalText').textContent=session?'Ingresá el efectivo contado al cierre.':'Ingresá el efectivo inicial disponible.';if(session){const today=isoToday(),cashSales=state.sales.filter(s=>s.date.slice(0,10)===today&&s.payment==='Efectivo').reduce((a,s)=>a+s.total,0),expenses=state.expenses.filter(e=>e.date.slice(0,10)===today).reduce((a,e)=>a+e.amount,0);$('#cashClosingAmount').value=session.openingAmount+cashSales-expenses}else $('#cashOpeningAmount').value=0};
+$('#cancelCashModal').onclick=()=>$('#cashModal').classList.add('hidden');
+$('#confirmCashModal').onclick=()=>{if(!isAdmin())return;const session=activeCash();if(session){session.closedAt=new Date().toISOString();session.closingAmount=Math.max(0,Number($('#cashClosingAmount').value)||0);const today=isoToday(),cashSales=state.sales.filter(s=>s.date.slice(0,10)===today&&s.payment==='Efectivo').reduce((a,s)=>a+s.total,0),expenses=state.expenses.filter(e=>e.date.slice(0,10)===today).reduce((a,e)=>a+e.amount,0);session.expectedAmount=session.openingAmount+cashSales-expenses;session.difference=session.closingAmount-session.expectedAmount;toast('Caja cerrada')}else{state.cashSessions.push({id:uid(),openedAt:new Date().toISOString(),openingAmount:Math.max(0,Number($('#cashOpeningAmount').value)||0),openedBy:currentUser.id,closedAt:null});toast('Caja abierta')}save();$('#cashModal').classList.add('hidden');renderAll()};
+$('#addExpense').onclick=()=>{if(!isAdmin())return;const concept=$('#expenseConcept').value.trim(),amount=Math.max(0,Number($('#expenseAmount').value)||0),notes=$('#expenseNotes').value.trim();if(!concept||amount<=0){toast('Completá concepto y monto');return}state.expenses.unshift({id:uid(),date:new Date().toISOString(),concept,amount,notes,userId:currentUser.id});$('#expenseConcept').value='';$('#expenseAmount').value='';$('#expenseNotes').value='';save();renderAll();toast('Gasto registrado')};
+
+function renderServiceTable(){if(!isAdmin())return;$('#servicesTable').innerHTML=state.services.length?`<table><thead><tr><th>Servicio</th><th>Precio</th><th>Acción</th></tr></thead><tbody>${state.services.map(s=>`<tr><td>${s.name}</td><td><input class="input" style="width:125px;padding:7px" type="number" value="${s.price}" onchange="updateService('${s.id}',this.value)"></td><td><button class="btn btn-danger" onclick="deleteService('${s.id}')">Eliminar</button></td></tr>`).join('')}</tbody></table>`:'<div class="empty">No hay servicios.</div>'}
+$('#addService').onclick=()=>{if(!isAdmin())return;const n=$('#newServiceName').value.trim(),p=Math.max(0,Number($('#newServicePrice').value)||0);if(!n||p<=0){toast('Completá servicio y precio');return}state.services.push({id:uid(),name:n,price:p});$('#newServiceName').value='';$('#newServicePrice').value='';save();renderAll();toast('Servicio agregado')};
+window.updateService=(id,v)=>{if(!isAdmin())return;const s=state.services.find(x=>x.id===id);if(!s)return;s.price=Math.max(0,Number(v)||0);save();renderAll();toast('Precio actualizado')};
+window.deleteService=id=>{if(!isAdmin())return;state.services=state.services.filter(s=>s.id!==id);save();renderAll();toast('Servicio eliminado')};
+
+$('#openAddUser').onclick=()=>$('#addUserModal').classList.remove('hidden');$('#cancelAddUser').onclick=()=>$('#addUserModal').classList.add('hidden');
+$('#saveUser').onclick=()=>{if(!isAdmin())return;const n=$('#newUserName').value.trim(),role=$('#newUserRole').value,commission=Math.min(100,Math.max(0,Number($('#newUserCommission').value)||0)),fixed=Math.max(0,Number($('#newUserFixed').value)||0);if(!n){toast('Ingresá un nombre');return}state.users.push({id:uid(),name:n,role,password:null,commission,fixed,active:true});save();$('#addUserModal').classList.add('hidden');$('#newUserName').value='';renderAll();toast('Usuario creado')};
+function renderUsers(){if(!isAdmin())return;$('#usersGrid').innerHTML=state.users.map(u=>`<div class="user-card"><div class="user-card-top"><div class="current-avatar">${initials(u.name)}</div><div><strong>${u.name}</strong><small style="display:block;color:var(--muted);margin-top:3px">${roleLabel(u.role)}</small></div></div><p>${u.role==='admin'?'Cuenta protegida con contraseña. Único usuario con permisos administrativos.':'Perfil sin contraseña. Comisión configurada: '+(u.commission||0)+'%.'}</p>${u.role!=='admin'?`<div style="display:flex;gap:7px;margin-top:10px"><button class="btn btn-secondary" onclick="editPayroll('${u.id}')">Editar sueldo</button><button class="btn btn-danger" onclick="toggleUser('${u.id}')">${u.active===false?'Activar':'Desactivar'}</button></div>`:''}</div>`).join('')}
+window.toggleUser=id=>{if(!isAdmin())return;const u=state.users.find(x=>x.id===id);if(!u)return;u.active=u.active===false?true:false;save();renderAll();toast('Usuario actualizado')};
+window.editPayroll=id=>{if(!isAdmin())return;const u=state.users.find(x=>x.id===id);if(!u)return;const c=prompt(`Comisión de ${u.name} (%)`,u.commission??0);if(c===null)return;const f=prompt(`Fijo adicional de ${u.name} ($)`,u.fixed??0);if(f===null)return;u.commission=Math.min(100,Math.max(0,Number(c)||0));u.fixed=Math.max(0,Number(f)||0);save();renderAll();toast('Repartición actualizada')};
+function payrollSales(){const p=$('#payrollPeriod').value||'all',today=isoToday(),month=today.slice(0,7);return state.sales.filter(s=>p==='all'||(p==='today'&&s.date.slice(0,10)===today)||(p==='month'&&s.date.slice(0,7)===month))}
+function renderPayroll(){if(!isAdmin())return;const ps=payrollSales(),revenue=ps.reduce((a,s)=>a+s.total,0),employees=state.users.filter(u=>u.role!=='admin'&&u.active!==false);let employeeTotal=0;$('#payrollCards').innerHTML=employees.map(u=>{const gross=ps.filter(s=>s.userId===u.id).reduce((a,s)=>a+s.total,0),commission=gross*(Number(u.commission)||0)/100,fixed=Number(u.fixed)||0,total=commission+fixed;employeeTotal+=total;return`<div class="pay-card"><div class="user-card-top"><div class="current-avatar">${initials(u.name)}</div><div><strong>${u.name}</strong><small style="display:block;color:var(--muted);margin-top:3px">${roleLabel(u.role)}</small></div></div><div style="margin-top:11px"><div class="pay-line"><span>Ventas generadas</span><strong>${money(gross)}</strong></div><div class="pay-line"><span>Comisión</span><strong>${u.commission||0}% · ${money(commission)}</strong></div><div class="pay-line"><span>Fijo adicional</span><strong>${money(fixed)}</strong></div><div class="pay-total"><span>Total estimado</span><strong>${money(total)}</strong></div></div><button class="btn btn-secondary btn-full" style="margin-top:10px" onclick="editPayroll('${u.id}')">Configurar reparto</button></div>`}).join('')||'<div class="empty">Agregá empleados para configurar sueldos.</div>';$('#payRevenue').textContent=money(revenue);$('#payEmployees').textContent=money(employeeTotal);$('#payBusiness').textContent=money(Math.max(0,revenue-employeeTotal));$('#payCount').textContent=employees.length}
+$('#payrollPeriod').onchange=renderPayroll;
+
+function drawLine(canvas,values,labels){if(!canvas)return;const r=canvas.getBoundingClientRect();if(r.width<30||r.height<30)return;const d=devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;const c=canvas.getContext('2d');c.scale(d,d);const w=r.width,h=r.height,p=28,max=Math.max(...values,1);c.clearRect(0,0,w,h);c.strokeStyle='#2e3641';c.lineWidth=1;for(let i=0;i<4;i++){const y=p+(h-2*p)*i/3;c.beginPath();c.moveTo(p,y);c.lineTo(w-p,y);c.stroke()}c.strokeStyle='#f28c28';c.lineWidth=3;c.beginPath();values.forEach((v,i)=>{const x=p+(w-2*p)*(values.length===1?.5:i/(values.length-1)),y=h-p-v/max*(h-2*p);i?c.lineTo(x,y):c.moveTo(x,y)});c.stroke();c.fillStyle='#9aa5b2';c.font='9px system-ui';c.textAlign='center';labels.forEach((l,i)=>{const x=p+(w-2*p)*(labels.length===1?.5:i/(labels.length-1));c.fillText(l,x,h-8)})}
+function drawBars(canvas,values,labels){if(!canvas)return;const r=canvas.getBoundingClientRect();if(r.width<30||r.height<30)return;const d=devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;const c=canvas.getContext('2d');c.scale(d,d);const w=r.width,h=r.height,p=30,max=Math.max(...values,1),slot=(w-2*p)/Math.max(values.length,1);c.clearRect(0,0,w,h);values.forEach((v,i)=>{const bh=v/max*(h-2*p-10),x=p+i*slot+slot*.18,bw=slot*.64,y=h-p-bh;c.fillStyle='#f28c28';c.beginPath();if(c.roundRect)c.roundRect(x,y,bw,bh,Math.min(8,bw/2));else c.rect(x,y,bw,bh);c.fill();c.fillStyle='#9aa5b2';c.font='9px system-ui';c.textAlign='center';c.fillText(labels[i]||'',x+bw/2,h-8)})}
+function drawCharts(){const days=[];for(let i=6;i>=0;i--){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-i);const local=new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);days.push({label:d.toLocaleDateString('es-AR',{weekday:'short'}).replace('.',''),value:state.sales.filter(s=>s.date.slice(0,10)===local).reduce((a,s)=>a+s.total,0)})}drawLine($('#salesChart'),days.map(x=>x.value),days.map(x=>x.label));const users=state.users.filter(u=>u.active!==false);drawBars($('#userChart'),users.map(u=>state.sales.filter(s=>s.userId===u.id).reduce((a,s)=>a+s.total,0)),users.map(u=>u.name.split(' ')[0]))}
+window.addEventListener('resize',drawCharts);
+</script>
+</body>
+</html>
