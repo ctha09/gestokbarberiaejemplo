@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>GestOK Barberías · Demo</title>
+<title>Cronos · Demo</title>
 <style>
 :root{
   --bg:#0b0e11;--bg2:#101419;--panel:#171b21;--panel2:#1d222a;--panel3:#252c35;
@@ -36,7 +36,7 @@ table{width:100%;border-collapse:separate;border-spacing:0 7px}th{text-align:lef
 @media(max-width:850px){.sale-mode-row{grid-template-columns:1fr}.free-sale-box{grid-template-columns:1fr}.stats-extra{grid-template-columns:1fr 1fr}}
 
 
-/* === GestOK Barberías V9: dock táctil iOS + menú circular gestual === */
+/* === Cronos V9: dock táctil iOS + menú circular gestual === */
 .app{grid-template-columns:1fr!important;position:relative}
 .sidebar{display:none!important}
 .content{min-width:0;display:grid;grid-template-rows:auto 1fr}
@@ -261,7 +261,7 @@ table{width:100%;border-collapse:separate;border-spacing:0 7px}th{text-align:lef
   .bb-btn,.radial-option,.radial-trigger-center,.radial-backdrop,.radial-actions{transition:none!important}
 }
 
-/* === GestOK Barberías V10: abanico lateral desde ••• === */
+/* === Cronos V10: abanico lateral desde ••• === */
 .radial-menu{
   position:fixed!important;
   left:0!important;top:0!important;bottom:auto!important;
@@ -306,7 +306,7 @@ table{width:100%;border-collapse:separate;border-spacing:0 7px}th{text-align:lef
 @keyframes menuIconPulse{from{transform:scale(1) rotate(-3deg)}to{transform:scale(1.12) rotate(4deg)}}
 
 
-/* === GestOK Barberías V13 · acabado profesional === */
+/* === Cronos V13 · acabado profesional === */
 body{
   background-color:#080c10!important;
   background-image:
@@ -574,23 +574,43 @@ body{
   .demo-ribbon span{display:none}
 }
 
+
+.demo-access-note{
+  position:fixed;
+  left:50%;
+  top:12px;
+  transform:translateX(-50%);
+  z-index:1499;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(242,140,40,.10);
+  border:1px solid rgba(242,140,40,.20);
+  color:var(--orange);
+  font-size:8px;
+  font-weight:900;
+  backdrop-filter:blur(12px)
+}
+@media(max-width:600px){
+  .demo-access-note{display:none}
+}
+
 </style>
 </head>
 <body>
-<div class="demo-ribbon"><span>Modo demo</span><button id="resetDemo" type="button">Restablecer demo</button></div>
+<div class="demo-access-note">Acceso libre · sin contraseña</div><div class="demo-ribbon"><span>Cronos · Demo</span><button id="resetDemo" type="button">Restablecer demo</button></div>
 <div id="splash" class="hidden"><div class="splash-box"><div class="splash-mark">G</div><div class="splash-logo">Gest<span class="ok">OK</span> Barberías</div><div class="splash-sub">Gestión diaria. Simple. Compartida.</div><div class="splash-line"></div></div></div>
 
 <section id="onboarding" class="entry hidden">
   <div class="entry-card">
     <div class="entry-head"><div class="brand"><div class="brand-mark">G</div><div><h1>Gest<span class="ok">OK</span> Barberías</h1><p>Configuración inicial del negocio</p></div></div><span class="badge">Primer ingreso</span></div>
     <div class="entry-grid">
-      <div class="entry-visual"><div class="hero-kicker">GestOK Barberías</div><div class="hero-title">Un sistema compartido para todo el equipo.</div><div class="hero-copy">El administrador crea la barbería y controla usuarios, precios, caja, sueldos y estadísticas. Los empleados pueden registrar ventas, atender turnos, consultar clientes e historial sin usar contraseña.</div><div class="mini-kpis"><div class="mini-kpi"><span>Administrador</span><strong>Control total</strong></div><div class="mini-kpi"><span>Empleados</span><strong>Ingreso rápido</strong></div><div class="mini-kpi"><span>Ventas</span><strong>Por usuario</strong></div><div class="mini-kpi"><span>Sueldos</span><strong>Comisiones</strong></div></div></div>
-      <div class="entry-form"><h2>Crear barbería</h2><p>Este será el único usuario con contraseña y con permiso para agregar empleados o modificar información sensible.</p><div class="field"><label>Nombre de la barbería</label><input id="setupBusiness" class="input" placeholder="Ej. Barber House"></div><div class="field"><label>Nombre del administrador</label><input id="setupAdmin" class="input" placeholder="Ej. Carlos"></div><div class="field"><label>Contraseña del administrador</label><input id="setupPassword" class="input" type="password" placeholder="Contraseña"></div><div class="field"><label>Repetir contraseña</label><input id="setupPassword2" class="input" type="password" placeholder="Repetir contraseña"></div><button id="createBusiness" class="btn btn-primary btn-full">Crear GestOK Barberías</button><div class="small-note">Esta demo guarda los datos en el navegador. La versión online reemplazará este almacenamiento por una base de datos central.</div></div>
+      <div class="entry-visual"><div class="hero-kicker">Cronos</div><div class="hero-title">Un sistema compartido para todo el equipo.</div><div class="hero-copy">El administrador crea la barbería y controla usuarios, precios, caja, sueldos y estadísticas. Los empleados pueden registrar ventas, atender turnos, consultar clientes e historial sin usar contraseña.</div><div class="mini-kpis"><div class="mini-kpi"><span>Administrador</span><strong>Control total</strong></div><div class="mini-kpi"><span>Empleados</span><strong>Ingreso rápido</strong></div><div class="mini-kpi"><span>Ventas</span><strong>Por usuario</strong></div><div class="mini-kpi"><span>Sueldos</span><strong>Comisiones</strong></div></div></div>
+      <div class="entry-form"><h2>Crear barbería</h2><p>Este será el único usuario con contraseña y con permiso para agregar empleados o modificar información sensible.</p><div class="field"><label>Nombre de la barbería</label><input id="setupBusiness" class="input" placeholder="Ej. Barber House"></div><div class="field"><label>Nombre del administrador</label><input id="setupAdmin" class="input" placeholder="Ej. Carlos"></div><div class="field"><label>Contraseña del administrador</label><input id="setupPassword" class="input" type="password" placeholder="Contraseña"></div><div class="field"><label>Repetir contraseña</label><input id="setupPassword2" class="input" type="password" placeholder="Repetir contraseña"></div><button id="createBusiness" class="btn btn-primary btn-full">Crear Cronos</button><div class="small-note">Esta demo guarda los datos en el navegador. La versión online reemplazará este almacenamiento por una base de datos central.</div></div>
     </div>
   </div>
 </section>
 
-<section id="profilesScreen" class="profile-screen hidden"><div class="profile-wrap"><div class="profile-top"><div><h2 id="profilesBusiness">GestOK Barberías</h2><p>Seleccioná quién está usando el sistema.</p></div><div class="brand"><div class="brand-mark">G</div></div></div><div id="profilesGrid" class="profiles"></div><div id="adminLoginPanel" class="admin-login-panel hidden"><div class="card-head"><div><h3>Ingreso del administrador</h3><p id="adminLoginName"></p></div><span class="badge">Protegido</span></div><div class="field"><label>Contraseña</label><input id="adminLoginPassword" class="input" type="password" placeholder="Contraseña"></div><button id="adminLoginBtn" class="btn btn-primary btn-full">Ingresar</button></div></div></section>
+<section id="profilesScreen" class="profile-screen hidden"><div class="profile-wrap"><div class="profile-top"><div><h2 id="profilesBusiness">Cronos</h2><p>Seleccioná quién está usando el sistema.</p></div><div class="brand"><div class="brand-mark">G</div></div></div><div id="profilesGrid" class="profiles"></div><div id="adminLoginPanel" class="admin-login-panel hidden"><div class="card-head"><div><h3>Ingreso del administrador</h3><p id="adminLoginName"></p></div><span class="badge">Protegido</span></div><div class="field"><label>Contraseña</label><input id="adminLoginPassword" class="input" type="password" placeholder="Contraseña"></div><button id="adminLoginBtn" class="btn btn-primary btn-full">Ingresar</button></div></div></section>
 
 <section id="app" class="app hidden">
 <aside class="sidebar">
@@ -682,7 +702,7 @@ body{
 <script>
 
 const DEMO_PLATFORM_KEY='gestok_barberia_demo_standalone_v1';
-const DEMO_ORG_ID='gestok-barberia-demo';
+const DEMO_ORG_ID='gestok-cronos-demo';
 
 (function bootstrapBarberDemo(){
   const pad=n=>String(n).padStart(2,'0');
@@ -701,7 +721,7 @@ const DEMO_ORG_ID='gestok-barberia-demo';
   }catch(e){}
 
   if(!platform?.organizations?.some(o=>o.id===DEMO_ORG_ID)){
-    const admin={id:'demo-admin',name:'Administrador',role:'admin',password:'1234',commission:0,fixed:0,active:true};
+    const admin={id:'demo-admin',name:'Administrador',role:'admin',password:null,commission:0,fixed:0,active:true};
     const nico={id:'demo-nico',name:'Nicolás',role:'employee',password:null,commission:50,fixed:0,active:true};
     const mateo={id:'demo-mateo',name:'Mateo',role:'employee',password:null,commission:45,fixed:15000,active:true};
     const recep={id:'demo-lucia',name:'Lucía',role:'cashier',password:null,commission:0,fixed:25000,active:true};
@@ -747,11 +767,11 @@ const DEMO_ORG_ID='gestok-barberia-demo';
     platform={
       organizations:[{
         id:DEMO_ORG_ID,
-        name:'Barbería Demo',
-        loginSlug:'barberia-demo',
+        name:'Cronos',
+        loginSlug:'cronos-demo',
         type:'barbershop',
         phone:'3751232618',
-        password:'1234',
+        password:null,
         active:true,
         monthlyFee:4000,
         subscription:{
@@ -765,7 +785,7 @@ const DEMO_ORG_ID='gestok-barberia-demo';
       records:{
         [DEMO_ORG_ID]:{
           barberia:{
-            business:{id:DEMO_ORG_ID,name:'Barbería Demo'},
+            business:{id:DEMO_ORG_ID,name:'Cronos'},
             users:[admin,nico,mateo,recep],
             services,
             clients,
@@ -809,7 +829,7 @@ function activeCash(){return state.cashSessions.find(c=>!c.closedAt)||null}
 
 $('#createBusiness').onclick=()=>{const business=$('#setupBusiness').value.trim(),admin=$('#setupAdmin').value.trim(),p=$('#setupPassword').value,p2=$('#setupPassword2').value;if(!business||!admin||!p){toast('Completá todos los datos');return}if(p.length<4){toast('La contraseña debe tener al menos 4 caracteres');return}if(p!==p2){toast('Las contraseñas no coinciden');return}state.business={id:uid(),name:business};state.users=[{id:uid(),name:admin,role:'admin',password:p,commission:0,fixed:0,active:true}];save();$('#onboarding').classList.add('hidden');showProfiles()};
 
-function showProfiles(){currentUser=null;$('#app').classList.add('hidden');$('#profilesScreen').classList.remove('hidden');$('#adminLoginPanel').classList.add('hidden');$('#profilesBusiness').textContent=state.business?.name||'GestOK Barberías';$('#profilesGrid').innerHTML=state.users.filter(u=>u.active!==false).map(u=>{const ts=state.sales.filter(s=>s.userId===u.id&&s.date.slice(0,10)===isoToday()),total=ts.reduce((a,s)=>a+s.total,0);return`<button class="profile-card ${u.role==='admin'?'admin':''}" onclick="selectProfile('${u.id}')"><div class="profile-avatar">${initials(u.name)}</div><strong>${u.name}</strong><small>${roleLabel(u.role)}</small><div class="profile-kpi">${ts.length} ventas hoy · ${money(total)}</div></button>`}).join('')}
+function showProfiles(){currentUser=null;$('#app').classList.add('hidden');$('#profilesScreen').classList.remove('hidden');$('#adminLoginPanel').classList.add('hidden');$('#profilesBusiness').textContent=state.business?.name||'Cronos';$('#profilesGrid').innerHTML=state.users.filter(u=>u.active!==false).map(u=>{const ts=state.sales.filter(s=>s.userId===u.id&&s.date.slice(0,10)===isoToday()),total=ts.reduce((a,s)=>a+s.total,0);return`<button class="profile-card ${u.role==='admin'?'admin':''}" onclick="selectProfile('${u.id}')"><div class="profile-avatar">${initials(u.name)}</div><strong>${u.name}</strong><small>${roleLabel(u.role)}</small><div class="profile-kpi">${ts.length} ventas hoy · ${money(total)}</div></button>`}).join('')}
 window.selectProfile=id=>{const u=state.users.find(x=>x.id===id);if(!u)return;if(u.role==='admin'){const p=$('#adminLoginPanel');p.classList.remove('hidden');p.dataset.user=id;$('#adminLoginName').textContent=u.name;$('#adminLoginPassword').value='';$('#adminLoginPassword').focus()}else enterApp(u)};
 $('#adminLoginBtn').onclick=()=>{const u=state.users.find(x=>x.id===$('#adminLoginPanel').dataset.user);if(!u)return;if($('#adminLoginPassword').value!==u.password){toast('Contraseña incorrecta');return}enterApp(u)};
 $('#adminLoginPassword').addEventListener('keydown',e=>{if(e.key==='Enter')$('#adminLoginBtn').click()});
